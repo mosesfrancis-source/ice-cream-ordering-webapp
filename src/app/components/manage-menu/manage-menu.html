@@ -1,1 +1,83 @@
-<p>manage-menu works!</p>
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Manage Menu</h2>
+
+  <!-- ADD ITEM FORM -->
+  <div class="card shadow p-4 mb-4">
+    <h4>Add New Ice Cream Item</h4>
+
+    <form>
+      <div class="mb-3">
+        <label>Item Name</label>
+        <input class="form-control" type="text" placeholder="Example: Vanilla Ice Cream">
+      </div>
+
+      <div class="mb-3">
+        <label>Price</label>
+        <input class="form-control" type="number" placeholder="Example: 4.99">
+      </div>
+
+      <div class="mb-3">
+        <label>Total Quantity</label>
+        <input class="form-control" type="number" placeholder="Example: 100">
+      </div>
+
+      <div class="mb-3">
+        <label>Available Quantity</label>
+        <input class="form-control" type="number" placeholder="Example: 80">
+      </div>
+
+      <div class="mb-3">
+        <label>Description</label>
+        <textarea class="form-control" rows="3" placeholder="Item description"></textarea>
+      </div>
+
+      <button class="btn btn-success">Add Item</button>
+    </form>
+  </div>
+
+  <!-- MENU TABLE -->
+  <div class="card shadow p-4">
+    <h4>Current Menu Items</h4>
+
+    <table class="table table-bordered mt-3">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Total Qty</th>
+          <th>Available Qty</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>Vanilla Ice Cream</td>
+          <td>$4.99</td>
+          <td>100</td>
+          <td>80</td>
+          <td><span class="badge bg-success">Available</span></td>
+          <td>
+            <button class="btn btn-warning btn-sm me-2">Edit</button>
+            <button class="btn btn-danger btn-sm">Delete</button>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Chocolate Ice Cream</td>
+          <td>$5.49</td>
+          <td>50</td>
+          <td>0</td>
+          <td><span class="badge bg-danger">Out of Stock</span></td>
+          <td>
+            <button class="btn btn-warning btn-sm me-2">Edit</button>
+            <button class="btn btn-danger btn-sm">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <a routerLink="/admin" class="btn btn-secondary mt-3">Back to Dashboard</a>
+  </div>
+</div>
