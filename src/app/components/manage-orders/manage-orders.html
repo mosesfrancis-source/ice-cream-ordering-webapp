@@ -1,1 +1,61 @@
-<p>manage-orders works!</p>
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Manage Orders</h2>
+
+  <div class="card shadow p-4">
+
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Customer</th>
+          <th>Items</th>
+          <th>Pickup Time</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        @for (order of orders; track order.id) {
+          <tr>
+            <td>#{{ order.id }}</td>
+            <td>{{ order.customer }}</td>
+            <td>{{ order.items }}</td>
+            <td>{{ order.pickup }}</td>
+
+            <!-- STATUS (no *ngIf) -->
+            <td>
+              <span 
+                class="badge"
+                [class.bg-warning]="order.status === 'Pending'"
+                [class.bg-success]="order.status === 'Completed'"
+                [class.bg-danger]="order.status === 'Cancelled'">
+                {{ order.status }}
+              </span>
+            </td>
+
+            <!-- ACTIONS -->
+            <td>
+              <button 
+                class="btn btn-success btn-sm me-2"
+                (click)="markComplete(order)"
+                [disabled]="order.status !== 'Pending'">
+                Complete
+              </button>
+
+              <button 
+                class="btn btn-danger btn-sm"
+                (click)="cancelOrder(order)"
+                [disabled]="order.status !== 'Pending'">
+                Cancel
+              </button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+
+    <a routerLink="/admin" class="btn btn-secondary mt-3">Back to Dashboard</a>
+
+  </div>
+</div>
