@@ -1,9 +1,39 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../services/auth';
 
 @Component({
   selector: 'app-register',
-  imports: [],
+  standalone: true,
+  imports: [FormsModule],
   templateUrl: './register.html',
   styleUrl: './register.css',
 })
-export class Register {}
+export class Register {
+  private authService = inject(AuthService);
+
+  name = '';
+  email = '';
+  password = '';
+
+  loading = false;
+
+  onRegister(): void {
+    if (!this.name || !this.email || !this.password) {
+      alert('Please fill all fields');
+      return;
+    }
+
+    this.loading = true;
+
+    this.authService.register(this.name, this.email, this.password);
+
+    setTimeout(() => {
+      this.loading = false;
+      alert('Account created successfully!');
+      this.name = '';
+      this.email = '';
+      this.password = '';
+    }, 1000);
+  }
+}
